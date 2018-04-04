@@ -1,0 +1,19 @@
+<div id="page">
+    <header>
+        <app-header (onRegister)="onLoginOrRegister($event)" 
+                   (onLogin)="onLoginOrRegister($event)">
+        </app-header>
+    </header>
+    <main>
+
+        <div [ngSwitch]="title">
+                <app-register-form *ngSwitchCase="'register'"></app-register-form>
+                <app-login-form *ngSwitchCase="'login'"></app-login-form>
+                <app-home *ngSwitchDefault></app-home>
+        </div>
+       
+    </main>
+    <footer>
+        <app-footer></app-footer>
+    </footer>
+</div>

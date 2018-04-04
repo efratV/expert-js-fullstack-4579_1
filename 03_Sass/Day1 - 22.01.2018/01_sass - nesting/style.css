@@ -1,0 +1,24 @@
+#main {
+  color: blue;
+}
+
+#main-sub {
+  background-color: red;
+}
+
+#main a {
+  font-weight: bold;
+}
+
+#main a:hover {
+  color: red;
+}
+
+div {
+  font-family: fantasy;
+  font-size: 15em;
+  font-weight: bold;
+  border-color: yellow;
+  border-style: dashed;
+}
+/*# sourceMappingURL=style.css.map */

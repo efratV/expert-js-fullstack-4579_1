@@ -1,0 +1,22 @@
+<form>
+  firstName:<input name="firstName" [(ngModel)]="newUser.firstName" /> lastName:
+  <input name="lastName" [(ngModel)]="newUser.lastName" /> userName:
+  <input name="userName" [(ngModel)]="newUser.userName" /> password:
+  <input name="password" [(ngModel)]="newUser.password" />
+</form>
+
+
+<div *ngIf="countryList?.length">
+
+  <div class="dropdown">
+    <button>Country:</button>
+
+    <ul>
+      <li *ngFor="let x of countryList">
+          <app-country-info [country]="x"></app-country-info>
+      </li>
+    </ul>
+
+
+  </div>
+</div>

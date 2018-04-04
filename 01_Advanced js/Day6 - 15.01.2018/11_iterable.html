@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <script>
+
+        /*
+         let - of can only run trough iterable object
+        ----!!   generators are iterable     !!-----
+         */
+
+        //arr is  iterable
+        let arr = [2, 3, 45];
+
+        //str is  iterable
+        let str = "str";
+
+        //obj is not iterable
+        let obj = { x: 66, y: 88 };
+
+        f(arr);
+        f(str);
+        f(obj);
+        function f(p) {
+            for (let q of p) {
+                console.log(q);
+            }
+        }
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

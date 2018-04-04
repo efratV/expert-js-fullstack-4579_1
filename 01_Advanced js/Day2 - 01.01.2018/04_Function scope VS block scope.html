@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        /*
+         var -> is hoisted and can be used before the declaration (will be undefined)
+        let -> can not be used before the declaration ( uninitialized - is not set to undefined)
+         */
+
+
+        function func1() {
+
+            //console.log(num1);//Uncaught ReferenceError: num1 is not defined
+            console.log(num2);
+
+            let num1 = 0;  //let -> block scope
+            var num2 = 1;  //var -> function scope
+
+
+            if (num1 == 0) {
+
+                //console.log(num3); //Uncaught ReferenceError: num3 is not defined
+                console.log(num4);  
+
+
+                let num3 = 3;  //let -> block scope
+                var num4 = 4;  //var -> function scope
+
+                console.log(num3);
+                console.log(num4);
+            }
+
+
+            console.log(num1);
+            console.log(num2);
+            //console.log(num3); //Uncaught ReferenceError: num3 is not defined
+            console.log(num4);
+        }
+
+        func1();
+       //console.log(num1);  //Uncaught ReferenceError: num1 is not defined
+       //console.log(num2);   //Uncaught ReferenceError: num2 is not defined
+    </script>
+</head>
+<body>
+
+</body>
+</html>

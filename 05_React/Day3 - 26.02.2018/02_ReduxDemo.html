@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script>
+
+        //create reducer
+        function reduce() {
+
+            this.state = { isLogedIn: false, applicationName:"Redux-demo" };
+
+            this.dispatch = (currentState, action) => {
+                switch (action.type) {
+                    case "LOGIN_SUCCESS": this.state = {
+                        ...currentState,
+                        isLogedIn: true,
+                        username: action.payload.username,
+                        password: action.payload.password
+                    }; break;
+                    case "LOGIN_FAILED": this.state = {
+                        ...currentState,
+                        isLogedIn: false,
+                        username: "Guest",
+                        password: ""
+                    }; break;
+
+                    default: this.state = { ...currentState };
+                }
+            }
+        }
+
+        //create store
+        let store = new reduce();
+
+        //dispatch - call the reducer
+        function login(param) {
+            if (param)
+                store.dispatch(store.state, createAction("LOGIN_SUCCESS", { username: "Zohar", password: "Moshiko" }));
+            else
+                store.dispatch(store.state, createAction("LOGIN_FAILED"));
+        }
+
+
+        //create an action object
+        function createAction(actionType, actionParams) {
+            return {
+                type: actionType,
+                payload: actionParams
+            }
+        }
+
+        showState=()=>console.log(store.state);
+
+    </script>
+</head>
+
+<body>
+    <button onclick="login(true)">set login success</button>
+    <button onclick="login(false)">set login failed</button>
+    <button onclick="showState()">show state in console</button>
+</body>
+
+</html>

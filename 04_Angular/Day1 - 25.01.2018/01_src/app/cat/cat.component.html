@@ -1,0 +1,28 @@
+
+<div class="cat-div" *ngIf="true">
+    <h1>{{title}}</h1>
+    <p *ngIf="!isFriendlyCat()">
+      {{sayHello()}}
+    </p>
+    <p *ngIf="animalFullInfo">
+     {{animalFullInfo()}}
+    </p>
+
+    <p>
+        {{'cat age:'+age}}
+    </p>
+
+<h1>cat Children:</h1>
+   <ul *ngIf="catChildren.length < 6"> 
+     <li *ngFor="let x of catChildren">{{x}}</li>
+   </ul>
+
+<div *ngIf="catHouse">
+    <h1>Cat House Info:</h1>
+    <p>{{catHouse.city}}</p>
+    <p>{{catHouse.houseNum}}</p>
+    <p>{{catHouse.country}}</p>
+</div>
+
+</div>
+

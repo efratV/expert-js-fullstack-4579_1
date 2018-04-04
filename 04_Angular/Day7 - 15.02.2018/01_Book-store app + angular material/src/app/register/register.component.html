@@ -1,0 +1,57 @@
+
+
+
+
+<div class="mat-app-background basic-container">
+
+<mat-horizontal-stepper [linear]="isLinear" #stepper="matHorizontalStepper">
+  <mat-step>
+   
+      <ng-template matStepLabel>Register</ng-template>
+      <form>
+          firstName:<input name="firstName" [(ngModel)]="newUser.firstName" /> lastName:
+          <input name="lastName" [(ngModel)]="newUser.lastName" /> userName:
+          <input name="userName" [(ngModel)]="newUser.userName" /> password:
+          <input name="password" [(ngModel)]="newUser.password" />
+        </form>
+      <div>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+  </mat-step>
+  <mat-step>
+    <form>
+      <ng-template matStepLabel>Fill out your address</ng-template>
+      <div *ngIf="countryList?.length">
+          
+            <div class="dropdown">
+              <p>Country:</p>
+              <button (click)="setCountryMode()">     
+                  <app-country-info [country]="selectedCountry"></app-country-info>
+              </button>
+          
+              <ul *ngIf="selectCountryMode">
+                <li *ngFor="let x of countryList">
+                    <app-country-info [country]="x" (onSelectCountry)="setUserCountry($event)"></app-country-info>
+                </li>
+              </ul>
+          
+          
+            </div>
+          </div>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Done</ng-template>
+    You are now done.
+    <div>
+      <button mat-button matStepperPrevious>Back</button>
+      <button mat-button (click)="stepper.reset()">Reset</button>
+    </div>
+  </mat-step>
+</mat-horizontal-stepper>
+</div>
+

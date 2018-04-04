@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <script>
+        function asyncFunc1(num) {
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    if (num > 0)
+                        resolve(console.info("resolve asyncFunc1") || "asyncFunc1");
+                    else
+                        reject(console.info("reject asyncFunc1") || "asyncFunc1 reject");
+                }
+                    , 6000)
+
+            })
+        }
+
+
+        function asyncFunc2(num) {
+
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    if (num != 0)
+                        resolve(console.info("resolve asyncFunc2") || "asyncFunc2");
+                    else
+                        reject(console.info("reject asyncFunc2") || "asyncFunc2 reject");
+                }
+                    , 1000)
+
+            })
+        }
+
+
+        const resolveFunc = (x) => { console.log("Promise.resolve", x) };
+        const rejectFunc = (x) => { console.log("Promise.reject", x) };
+
+
+
+
+        //asyncFunc2 will be resolved first 
+        //so asyncFunc1 will rejected, it will never get to the catch() 
+        Promise.race([
+            asyncFunc1(0),  //setTimeOut 6 sec - reject
+            asyncFunc2(1),  //setTimeOut 1 sec - resolve
+        ])
+            .then((x) => {
+                resolveFunc("race:" + x);
+            })
+            .catch(
+            rejectFunc
+            );
+
+
+     
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

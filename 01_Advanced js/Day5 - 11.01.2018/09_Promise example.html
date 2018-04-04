@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <script>
+           /*
+         A Promise is in one of these states:
+               pending: initial state, neither fulfilled nor rejected.
+               fulfilled: meaning that the operation completed successfully.
+               rejected: meaning that the operation failed.
+               
+         */
+        var promiseCount = 0;
+
+        function test() {
+            let thisPromiseCount = ++promiseCount;
+
+            console.log('test number: ', thisPromiseCount + ' Sync code started');
+
+            let p1 = new Promise(
+                (resolve, reject) => {
+                    console.log('promise number: ', thisPromiseCount + ' - Async code started');
+                    if (thisPromiseCount > 2)
+                        reject(thisPromiseCount);
+                    else
+                        resolve(thisPromiseCount);
+                }
+            );
+
+            console.log('test number: ', thisPromiseCount + ' Sync code terminated');
+
+            return p1.then(
+                function (val) {
+                    return 'returned Promise fulfilled: ' + val;
+                })
+                .catch(
+                (reason) => {
+                  throw new Error('returned Promise rejected: ' + reason);
+                });
+
+            
+        }
+
+        for (let i = 0; i < 3; i++) {
+            test().then(
+                function (val) {
+                    console.log('Promise fulfilled: ' + val);
+                })
+                .catch(
+                (reason) => {
+                    console.log('Promise rejected:' + reason);
+                });
+        }
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

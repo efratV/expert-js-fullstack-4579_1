@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+    <!--RxJS uses an external library-->
+    <script src="https://unpkg.com/@reactivex/rxjs@5.4.2/dist/global/Rx.js"></script>
+ 
+</head>
+<body>
+    <button id="b1">click me!!!</button>
+
+
+    <script>
+        let index = 1;
+
+        const button = document.getElementById('b1');
+
+        const obs = Rx.Observable.fromEvent(button, 'click');
+
+        obs.subscribe(
+            (event) => { console.log(`${event.type} number ${index++}`);},
+            (error) => { console.log(error);}
+        );
+    </script>
+</body>
+</html>

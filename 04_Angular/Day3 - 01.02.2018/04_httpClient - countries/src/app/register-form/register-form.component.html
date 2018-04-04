@@ -1,0 +1,10 @@
+<form>
+<input name="firstName" [(ngModel)]="newUser.firstName"/>
+<input name="lastName" [(ngModel)]="newUser.lastName"/>
+<input name="age" [(ngModel)]="newUser.age"/>
+</form>
+
+<div *ngIf="countryList">
+    <h1>Country list:</h1>
+    <p *ngFor="let x of countryList">{{x.name}}</p>    
+</div>

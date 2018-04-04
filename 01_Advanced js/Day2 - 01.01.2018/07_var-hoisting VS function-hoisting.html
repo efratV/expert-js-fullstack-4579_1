@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        console.log("funcSimple", funcSimple);
+        funcSimple();
+
+        console.log("funcPointer", funcPointer);
+        funcPointer(); //Uncaught TypeError: funcPointer is not a function
+
+
+        var funcPointer = function () {
+            console.log("funcPointer");
+        }
+
+        function funcSimple() {
+            console.log("funcSimple");
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

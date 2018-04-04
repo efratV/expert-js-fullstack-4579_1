@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        /*
+        const that stores an object:
+        we can change the value of the object
+        but we can not point to a different object
+         */
+
+        const objSrc = {};
+        console.log(objSrc);
+
+        objSrc.name = "Yehuda";
+        objSrc["last Name"] = "W.";
+        console.log(objSrc);
+        console.log(JSON.stringify(objSrc));
+
+        console.log(`objSrc.name`, objSrc.name);
+        console.log(`objSrc["last Name"]`, objSrc["last Name"]);
+
+        //objSrc={name:"Tamir"}; //Uncaught TypeError: Assignment to constant variable.
+        const objSrc2 = { name: "Uri" };
+        console.log(objSrc2.name);
+        objSrc2.name = "Manor";
+        console.log(objSrc2.name);
+
+
+        const arr = [];
+        console.log(arr);
+        arr.push(1);
+        arr.push(2);
+        arr[2] = 3;
+        console.log(arr);
+        //arr=[];  //Uncaught TypeError: Assignment to constant variable.
+    </script>
+</head>
+<body>
+
+</body>
+</html>

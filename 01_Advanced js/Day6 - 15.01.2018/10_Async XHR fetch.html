@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script>
+        /*
+        fetch function - provided in the global window scope, with the first argument being the URL
+        GET request, is the default one for the fetch function
+        -----------------------
+        fetch(input: RequestInfo, init?: RequestInit): Promise<Response>;
+         */
+
+         /*
+        the resulting callback data by "fetch" has a json method
+        "json" for converting the raw data to a JavaScript object
+        -----------------------
+        json(): Promise<any>
+        */
+        
+        async function getName() {
+            const url = 'https://reqres.in/api/users';
+            let response = await fetch(`${url}`);
+            console.log('response', response);
+            const res1 = await response.json();
+            console.log('res1', res1);
+
+
+
+            //we use the result of the first request to the second request
+            const userId = res1.data[0].id;  //userId=1
+            response = await fetch(`${url}/${userId}`);
+            const res2 = await response.json();
+
+            return res2.data.avatar;
+        }
+
+        async function showPic() {
+            let res = await getName();
+            document.write(`<img src='${res}'/>`);
+        }
+
+        /*
+        //await is only valid in async function!!!
+          await getName(); --> ERROR
+        */
+
+        showPic();  //simple call to an async function that will hadle with await the promise
+
+        getName()
+            .then(x => (console.log(`<img src='${x}'/>`)))
+            .catch(error => console.log('error'));
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

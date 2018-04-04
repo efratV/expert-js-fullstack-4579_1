@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <script>
+        let callbackFunc = function () {
+            console.log("a1 click");
+        };
+
+        window.onload = () => {
+            document.getElementById("a1").addEventListener("click", callbackFunc);
+        }
+        
+    </script>
+</head>
+
+<body>
+    <button id="a1">a1</button>
+
+
+</body>
+
+</html>

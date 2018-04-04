@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <script>
+
+        /*--------------object literal--------------------
+        JavaScript’s object literals - creates directly plain objects
+        */
+        let collage = {
+            name: 'JB',
+            address: 'Tel Aviv',
+           
+        };
+
+        collage.roomNum=410;
+        collage["floor"]=4;
+
+        console.log(Object.getOwnPropertyDescriptor(collage,"floor"));
+        
+
+        /*
+        by default if we dont congigure the prop attributes we will get:
+            configurable:true,
+            enumerable:true,
+            writable:true
+        */
+        Object.defineProperty(collage, 'notConfigurableProp', {
+            value: 456,
+            configurable:false,
+            enumerable:false,
+            writable:false
+        });
+
+        console.log(Object.getOwnPropertyDescriptor(collage,"notConfigurableProp"));
+        
+        console.log(collage.notConfigurableProp);
+        collage.notConfigurableProp=400;  //ignored because the attribute "writable:false"
+        console.log(collage.notConfigurableProp);
+
+        //this loops return only the enumerable props
+        for(i in collage){
+            console.log(i);
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

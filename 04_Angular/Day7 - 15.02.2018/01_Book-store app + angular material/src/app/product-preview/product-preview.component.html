@@ -1,0 +1,14 @@
+
+
+    <mat-card-title-group>
+        <img mat-card-sm-image *ngIf="bookPreview.volumeInfo?.imageLinks?.smallThumbnail" [src]="bookPreview.volumeInfo?.imageLinks?.smallThumbnail"
+        />
+        <mat-card-title>{{ bookPreview.volumeInfo?.title | appStringShort:35 }}</mat-card-title>
+        <mat-card-subtitle *ngIf="bookPreview.volumeInfo?.subtitle">{{ bookPreview.volumeInfo.subtitle | appStringShort:40 }}</mat-card-subtitle>
+    </mat-card-title-group>
+    <mat-card-content>
+
+        <p>Price:<span appPriceTag="bookPreview?.saleInfo?.listPrice?.amount"></span></p>
+
+    </mat-card-content>
+    

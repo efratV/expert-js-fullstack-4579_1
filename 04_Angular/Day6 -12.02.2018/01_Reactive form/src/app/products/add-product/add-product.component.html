@@ -1,0 +1,33 @@
+<h2>Add New Product</h2>
+
+<!-- The formGroup binds to the Component's formGroup property: -->
+<form novalidate [formGroup]="productForm" (ngSubmit)="addProduct()">
+
+    <div>
+        <!-- Each formControlName binds to one formControl inside the formGroup property: -->
+        <input type="text" formControlName="productNameControl" placeholder="Product name..." />
+
+        <!-- Presenting the validation errors in a dedicated Component: -->
+        <app-error [controlToValidate]="productForm.controls['productNameControl']"></app-error>
+    </div>
+
+    <div>
+        <input type="number" formControlName="unitPriceControl" placeholder="Unit price..." />
+        <app-error [controlToValidate]="productForm.controls['unitPriceControl']"></app-error>
+    </div>
+
+    <div>
+        <input type="number" formControlName="unitsInStockControl" placeholder="Units in stock..." />
+        <app-error [controlToValidate]="productForm.controls['unitsInStockControl']"></app-error>
+    </div>
+
+    <div>
+        <input type="number" formControlName="unitsOnOrderControl" placeholder="Units on order..." />
+        <app-error [controlToValidate]="productForm.controls['unitsOnOrderControl']"></app-error>
+    </div>
+
+    <div>
+        <input type="submit" value="Add" [disabled]="!productForm.valid" />
+    </div>
+
+</form>

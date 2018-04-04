@@ -1,0 +1,83 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        let c = {
+
+            //*****************  method   *************************
+            //"this" keyword refers to the object that called the method
+            printXY: function () {
+                console.log(`x:${this.x}, y:${this.y}`)
+            },
+            //******************************************************
+
+
+            //*****************  method   *************************
+            //"this" keyword refers to the object that called the method
+            printMulXY: function (num1, num2) {
+                console.log(`mul x:${this.x * num1}, mul y:${this.y * num2}`)
+            }
+            //******************************************************
+        }
+
+        let c1 = {
+            __proto__: c,
+            x: 1,
+            y: 2
+        }
+
+
+        let c2 = {
+            __proto__: c,
+            x: 3,
+            y: 4
+        }
+
+        let c3 = {
+            x: 5,
+            y: 6
+        }
+
+
+        //*****************  simple function  *************************
+        function printXY_External(point) {
+            console.log(`x:${point.x}, y:${point.y}`)
+        }
+        //*************************************************************
+
+        c1.printXY();
+        c2.printXY();
+
+        c1.printMulXY(2, 3);
+        c2.printMulXY(2, 3);
+
+        printXY_External(c1);
+        printXY_External(c2);
+
+
+        //call to  c.printXY function
+        //c3 will be the "this" in c.printXY function context
+        //after the first parameter - it is optional to send more parameters
+        //that will be sent as arguments to the called function
+        c.printXY.call(c3);
+        c.printMulXY.call(c3, 2, 3);
+
+        c.printXY.call({ x: 7, y: 8 });
+        c.printMulXY.call({ x: 7, y: 8 }, 2, 3);
+
+
+        //apply to  c.printXY function
+        //c3 will be the "this" in c.printXY function context
+        //and the second parameter - is optional, and will be an array
+        //that will be sent as arguments to the called function
+        c.printXY.apply(c3);
+        c.printMulXY.apply(c3, [2, 3]);
+
+        c.printXY.apply({ x: 7, y: 8 });
+        c.printMulXY.apply({ x: 7, y: 8 }, [2, 3]);
+    </script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,12 @@
+<section *ngIf="product; else noProduct">
+    <h2>{{product.productName}} - {{product.unitPrice | currency:'ILS':true:'1.2-2'}}</h2>
+    <h2>{{product.unitsInStock}} units in stock, {{product.unitsOnOrder}} units on order</h2>
+    <img src="/assets/images/{{product.productID}}.jpg" />
+</section>
+
+<ng-template #noProduct>
+    <h2>No such product.</h2>
+</ng-template>
+
+<br/><br/><br/>
+<a href="javascript:void(0)" (click)="goBack()">Back to List</a>

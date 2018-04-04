@@ -1,0 +1,38 @@
+<section>
+
+    <!-- Property Binding: -->
+    <table border="1" *ngIf="products?.length; else noProducts" [style.font-size.px]="fontSize">
+        <tr>
+            <th>Product Name</th>
+
+            <!-- Event Binding: -->
+            <th (click)="showAveragePrice()">Unit Price</th>
+
+            <th>Units in Stock</th>
+            <th>Units on Order</th>
+        </tr>
+
+        <tr *ngFor="let p of products">
+
+            <td>{{p.productName}}</td>
+            <td>{{p.unitPrice | currency:'ILS':true:'1.2-2'}}</td>
+            <td>{{p.unitsInStock}}</td>
+            <td>{{p.unitsOnOrder}}</td>
+        </tr>
+
+    </table>
+
+    <ng-template #noProducts>
+        <h2>There are no products to show.</h2>
+    </ng-template>
+
+    <!-- Two-Way Binding (Banana in a Box): -->
+    <span>Change font size: </span>
+    <input type="range" min="10" max="30" [(ngModel)]="fontSize" />
+    <!-- Note: 
+        1. Need to import FormsModule for using the ngModel. 
+        2. The ngModel binds the input's value attribute into the component's fontSize property.
+        3. Because of the two-way binding, any change to the value will influance on the fontSize
+           and any change on the fontSize will influance on the value. -->
+
+</section>

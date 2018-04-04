@@ -1,0 +1,36 @@
+
+<mat-card class="searchBox">
+  <mat-card-content>
+    <mat-input-container>
+      <input matInput name="bookFilter" placeholder="enter book" #bookFilterInput>
+    </mat-input-container>
+
+    <!--two way binding-->
+    <!--<input [(ngModel)]="currentFilter">-->
+    <button mat-button (click)="searchBooks(bookFilterInput.value)"> search</button>
+    <mat-spinner *ngIf="searching" [diameter]="30" [strokeWidth]="3"></mat-spinner>
+  
+
+
+  </mat-card-content>
+</mat-card>
+
+
+
+<mat-grid-list cols="2" rowHeight="2:1">
+  <mat-grid-tile *ngFor="let x of bookList; index as i">
+
+      <mat-card class="book">
+          <app-product-preview [bookPreview]="x"></app-product-preview>
+          <mat-card-footer>
+              <button *ngIf="x.id; else noDetails" (click)="showFullDetail(x.id)">show full details</button>
+              <ng-template #noDetails>
+                This Book has no details
+              </ng-template>
+          </mat-card-footer>
+      </mat-card>
+   
+    
+  </mat-grid-tile>
+
+</mat-grid-list>

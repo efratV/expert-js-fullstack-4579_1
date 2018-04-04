@@ -1,0 +1,25 @@
+<form>
+  firstName:<input name="firstName" [(ngModel)]="newUser.firstName" /> lastName:
+  <input name="lastName" [(ngModel)]="newUser.lastName" /> userName:
+  <input name="userName" [(ngModel)]="newUser.userName" /> password:
+  <input name="password" [(ngModel)]="newUser.password" />
+</form>
+
+
+<div *ngIf="countryList?.length">
+
+  <div class="dropdown">
+    <p>Country:</p>
+    <button (click)="setCountryMode()">     
+        <app-country-info [country]="selectedCountry"></app-country-info>
+    </button>
+
+    <ul *ngIf="selectCountryMode">
+      <li *ngFor="let x of countryList">
+          <app-country-info [country]="x" (onSelectCountry)="setUserCountry($event)"></app-country-info>
+      </li>
+    </ul>
+
+
+  </div>
+</div>

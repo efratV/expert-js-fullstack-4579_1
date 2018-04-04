@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+   <script>
+
+        // *[Symbol.iterator]() will be called when we run with "let-of" loop
+        let iterableObj = {
+            items: [],
+            *[Symbol.iterator]() {
+                for (let item of this.items) {
+                    yield item;
+                }
+            },
+            push: function (value) { this.items.push(value) }
+        };
+
+       iterableObj.push(1);
+       iterableObj.push(2);
+       iterableObj.push(3);
+
+       for (let x of iterableObj) {
+            console.log(x);
+        }
+       
+
+   </script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        //object-----------
+        var a1 = {
+            name: "Zohar"
+        };
+
+        var a2 = new Object();
+        a2.name = "Zohar";
+        var a3 = a2;
+
+        var str = "name";
+
+        console.log("a1", a1);
+        console.log("a2", a2);
+
+        console.log("a1===a2", a1 === a2);
+        console.log("a1===a3", a1 === a3);
+        console.log("a2===a3", a2 === a3);
+
+        console.log("a1.name", a1.name);
+        console.log("a1['name']", a1['name']);
+        console.log("a1.str", a1.str);  //--->undefined
+        console.log("a1[str]", a1[str]);
+
+
+        var str1 = JSON.stringify(a1);
+        console.log("str1", str1);
+        var objCopy_a1 = JSON.parse(JSON.stringify(a1));
+        console.log("objCopy_a1", objCopy_a1);
+        objCopy_a1.name = "Noam";
+        console.log("a1.name", a1.name);
+        console.log("objCopy_a1.name", objCopy_a1.name);
+
+
+        //array-----------
+        var a4 = [1, 2, 3, 4];
+        var a5 = new Array(1, 2, 3, 4);
+        var a6 = a5;
+
+        console.log("a4", a4);
+        console.log("a5", a5);
+        console.log("a6", a6);
+
+        console.log("a4==a5", a4 == a5);
+        console.log("a4==a6", a4 == a6);
+        console.log("a5==a6", a5 == a6);
+
+        console.log("a4[0]", a4[0]);
+
+
+        a4[0] = 5;
+        a5[0] = 8;
+        console.log("a4", a4);
+        console.log("a5", a5);
+        console.log("a6", a6);
+
+
+        //number
+        var num = 4;
+        str2 = `{"num1":${num},"num2":${num * 2}}`;
+        console.log("str2", str2);
+        console.log("JSON.parse(str2)", JSON.parse(str2));
+    </script>
+</head>
+<body>
+
+</body>
+</html>

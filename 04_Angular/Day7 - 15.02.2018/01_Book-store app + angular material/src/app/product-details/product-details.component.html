@@ -1,0 +1,34 @@
+<mat-card *ngIf="book">
+    <mat-card-title-group>
+        <mat-card-title>{{book?.volumeInfo?.title}}</mat-card-title>
+        <mat-card-subtitle *ngIf="book?.volumeInfo?.subtitle">{{book?.volumeInfo?.subtitle}}</mat-card-subtitle>
+        <img mat-card-sm-image *ngIf="book?.volumeInfo?.imageLinks?.thumbnail" [src]="book?.volumeInfo?.imageLinks?.thumbnail" />
+    </mat-card-title-group>
+    <mat-card-content>
+        <p [innerHtml]="book?.volumeInfo?.description"></p>
+     
+        
+        <h5 mat-subheader>Written By:</h5>
+        <span>
+          {{ getAuthorList() }}
+        </span>
+
+
+      <p>Price:<span appPriceTag="book?.saleInfo?.listPrice?.amount"></span></p> 
+    
+    </mat-card-content>
+
+  
+    <mat-card-footer class="footer">
+        <mat-card-actions>
+            <button mat-raised-button color="primary" *ngIf="isLogedIn.state">
+                        Add Book to Collection
+                        </button>
+
+                        <button mat-raised-button color="primary" (click)="goBack()">
+                                Back to book list
+                                </button>
+        </mat-card-actions>
+    </mat-card-footer>
+
+</mat-card>

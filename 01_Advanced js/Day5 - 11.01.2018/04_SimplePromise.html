@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <script>
+        /*
+        A Promise is in one of these states:
+                1. pending: initial state, neither fulfilled nor rejected.
+                2. fulfilled: meaning that the operation completed successfully.  (then)
+                3. rejected: meaning that the operation failed.  (catch)
+        */
+
+        function promiseMulNum(x) {
+            return new Promise(function (resolve, reject) {
+                setTimeout(function () {
+                    if (x > 0)
+                        resolve(x * x);
+                    else  
+                    reject("error");
+                }, 1000);
+            });
+        }
+
+        let resolveAction = (msg) => { console.log("resolve msg", msg); };
+        let rejectAction = (msg) => { console.log("reject msg", msg); };
+
+
+        console.log("before ------------");
+
+        promiseMulNum(10).catch(rejectAction).then(resolveAction);
+        promiseMulNum(0).then(resolveAction).catch(rejectAction);
+
+        console.log("after ------------");
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

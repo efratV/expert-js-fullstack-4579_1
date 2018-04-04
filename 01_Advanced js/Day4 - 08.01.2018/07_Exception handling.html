@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <script>
+        var count = 0;
+        function divOperation(num1, num2) {
+
+            //Don't throw strings, Use constructors for exception objects or subclass - to automatically add a stack trace
+            try {
+                if (num2 == 0)
+                    throw new Error("can't divide by zero");
+                console.log("num1/num2", num1 / num2);
+                return count;
+            }
+
+            //catch catches any exception that is thrown in try statements, whether directly or in functions they invoke
+            catch (ex) {
+                console.log("ex.message", ex.message);
+                console.log("ex.stack", ex.stack);
+            }
+
+            //finally is always executed, no matter what happens in try statements
+            //finally is executed after a return statement, and the return value is queued before executing finally
+            finally {
+                count++;
+                console.log("count inside function - finally:", count);
+            }
+        }
+
+        let res1 = divOperation(2, 1);
+        console.log("count return from the function into res1:", res1);
+        let res2 = divOperation(2, 0);
+        console.log("count return from the function into res2:", res2);
+    </script>
+</head>
+<body>
+
+</body>
+</html>

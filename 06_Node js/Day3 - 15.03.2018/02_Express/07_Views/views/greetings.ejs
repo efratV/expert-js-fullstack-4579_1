@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Greetings</title>
+	
+		<!-- The reason that the css link will work is because of the 
+	app.use(express.static(__dirname)) definition in the server --> 
+	<link rel="stylesheet" href="/site.css" />
+
+</head>
+<body>
+
+	<!-- Displaying the Model: -->
+    <h1>Hello <%= fullName %></h1>
+	
+	<!-- Displaying a Model without displaying any HTML tags inside the Model: -->
+	<%- description %>
+
+</body>
+</html>

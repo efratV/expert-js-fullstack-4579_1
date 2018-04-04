@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script>
+        function Person() {
+            let age = 5;
+
+            let callbackFunc = function (x) {
+                age = x;
+                console.log("age in callbackFunc", age);
+            };
+
+            this.setAge = function () {
+                calcAge(age,callbackFunc);
+                console.log("age in setAge", age);
+            };
+        }
+
+
+        function calcAge(age, paramFunc) {
+           
+                for (let i = 0; i < Math.pow(10, 10); i++) {
+
+                }
+                age++;
+                paramFunc(age);
+        }
+
+        let p = new Person();
+        p.setAge();
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

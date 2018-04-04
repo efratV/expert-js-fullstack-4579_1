@@ -1,0 +1,4 @@
+<div *ngFor="let x of bookList; index as i">
+  <app-product-preview [bookPreview]="x"></app-product-preview>
+  <button (click)="showFullDetail(i)">show full details</button>
+</div>

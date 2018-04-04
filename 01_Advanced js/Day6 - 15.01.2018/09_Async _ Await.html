@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <script>
+       
+        function step1(x) {
+            return new Promise(resolve => {
+                setTimeout(() => {
+                    resolve(x);
+                }, 2000);
+            });
+        }
+
+
+
+        function getAvg0(x) {
+            return  Promise.all([step1(1),step1(2)])
+            .then(([p1,p2])=>{ return (x + p1+ p2) / 3;})
+        }
+
+        getAvg0(10).then(x => {console.log(x);});
+
+        async function getAvg1(x) {
+            const a = await step1(1);
+            const b = await step1(2);
+            console.log("getAvg1");
+            return (x + a + b) / 3;
+        }
+
+        getAvg1(10).then(x => {console.log(x);});
+
+        async function getAvg2(x) {
+            const a = step1(1);  // a is promise
+            const b = step1(2);  // b is promise
+            console.log("getAvg2");
+            return (x + await a + await b) / 3;
+        }
+
+        getAvg2(10).then(x => {console.log(x);});
+       
+   </script>
+</head>
+<body>
+    
+</body>
+</html>

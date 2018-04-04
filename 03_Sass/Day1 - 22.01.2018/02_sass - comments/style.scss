@@ -1,0 +1,15 @@
+$firstName: "Zohar";
+$version: 1.2.6;
+
+/* writer: #{$firstName}
+ *vs: #{$version} 
+ *several lines comment
+ * since it uses the CSS comment syntax,
+ * it will appear in the CSS output. 
+ */
+ body { color: black; }
+ 
+ //single-line comment syntax.
+ //won't appear in the CSS output
+ a { color: green; }
+ 

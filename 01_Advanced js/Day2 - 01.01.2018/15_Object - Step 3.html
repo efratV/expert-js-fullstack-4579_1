@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <script>
+
+        /*--------------object literal--------------------
+        JavaScript’s object literals - creates directly plain objects
+        */
+        let collage = {
+            name: 'JB',
+            describe: function () {
+                //-->strict mode will throw an erroe when using "this" in a nested function
+                //'use strict';
+
+                //Functions Inside Methods Shadow this
+                nestedFunk0 = function () {
+                    //this = window
+                    //this.name->"Zohar"
+                    console.log(`nestedFunk0 prints collage name: ${this.name}`);
+                }
+                nestedFunk0();
+
+
+                //this = collage
+                //this.name->"JB"
+                return `collage describe name: ${this.name}`;
+            }
+        };
+        window.name = "Zohar";
+
+
+        //dot operator  - Accessing Properties via Fixed Keys
+        console.log(collage.describe());
+
+        //bracket operator  - Accessing Properties via Computed Keys
+        console.log(collage["describe"]());
+        
+    </script>
+</head>
+<body>
+
+</body>
+</html>

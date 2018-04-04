@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        function* createIterator() {
+            yield 1;
+            yield 2;
+            yield 3;
+            return 4;
+            yield 5;  //yield after return statement will not be returned
+        }
+
+         function *createIterator1(len) {
+             for (let i = 1; i < len; i++) {
+                 yield i*i;
+             }
+         }
+
+        // yield * returns a generator
+         function *mergeIterator() {
+            yield *createIterator1(5);
+            yield 34;
+            yield *createIterator();
+         }
+
+
+         let iterator = mergeIterator();
+         console.log("iterator", iterator);
+
+         for (let x of iterator) {
+             console.log(x);
+         }
+
+       
+        /*
+        output:
+        1
+        4
+        9
+        16
+        34
+        1
+        2
+        3
+        */
+    </script>
+</head>
+<body>
+
+</body>
+</html>

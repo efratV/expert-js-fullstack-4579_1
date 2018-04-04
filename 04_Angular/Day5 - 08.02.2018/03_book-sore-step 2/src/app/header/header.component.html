@@ -1,0 +1,7 @@
+
+<img [src]="userInfo.userUrlAvatar"/>
+<span>hello {{userInfo.fullName}}</span>
+
+<button><a>My-Account</a></button>
+<button><a>Products</a></button>
+<button *ngIf="userInfo.fullName!='Guest'"><a>My-Cart</a></button>

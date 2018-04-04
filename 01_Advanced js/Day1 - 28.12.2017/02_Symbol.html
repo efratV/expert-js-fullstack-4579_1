@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+
+        //number is compared by value
+        var num1 = 1;
+        var num2 = 1;
+        console.log(num1 === num2);  //true
+
+
+        //Every symbol value returned from Symbol() is unique
+        var sym1 = Symbol("foo");
+        var sym2 = Symbol("foo");
+        console.log(sym1 === sym2); //false
+
+
+        var sym3 = Symbol();
+        var sym4 = Symbol();
+        console.log(sym3 === sym4); //false
+
+
+        //console.log(sym1+""); -->Uncaught TypeError: Cannot convert a Symbol value to a string
+        console.log(sym1.toString());
+        console.log(sym1);
+
+    </script>
+</head>
+<body>
+</body>
+</html>

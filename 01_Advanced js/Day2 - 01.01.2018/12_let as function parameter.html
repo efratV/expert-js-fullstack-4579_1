@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        
+        //function func1(p1=p2,p2=6) --> ERROR
+        //parameters are like let - and can be used only after declaration
+        function func1(p1 = 6, p2 = p1) {
+            console.log("inside function p1 is:", p1);
+            console.log("inside function p2 is:", p2);
+        }
+        //console.log("after function p1 is:",p1);  -ReferenceError: p1 is not defined
+
+
+
+        func1(1, 2);  //p1=1 p2=2
+        func1(3);   //p1=3 p2=3
+        func1();   //p1=6 p2=6
+        func1(undefined, 9); //p1=6 p2=9  --> undefined is only placeholder
+    </script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+
+    <script>
+
+
+
+        function easyCalc() {
+            setTimeout(() => {
+                document.getElementById("res").innerHTML += "END easyCalc<br/>";
+            }, 5000);
+            document.getElementById("res").innerHTML += "START easyCalc<br/>";
+        }
+
+
+        function heavyCalc() {
+            setTimeout(() => {
+                for (let i = 0; i <= 10 ** 10; i++);
+                document.getElementById("res").innerHTML += "END heavyCalc<br/>";
+            }, 2000);
+            document.getElementById("res").innerHTML += "START heavyCalc<br/>";
+        }
+
+        function blockingCalc() {
+            {
+                for (let i = 0; i <= 10 ** 10; i++);
+                document.getElementById("res").innerHTML += "END blockingCalc<br/>";
+            }
+            document.getElementById("res").innerHTML += "START blockingCalc<br/>";
+        }
+    </script>
+</head>
+
+<body>
+    <input/>
+    <button onclick="heavyCalc()">heavyCalc</button>
+    <button onclick="easyCalc()">easyCalc</button>
+    <button onclick="blockingCalc()">blockingCalc</button>
+    <div id="res"></div>
+</body>
+
+</html>

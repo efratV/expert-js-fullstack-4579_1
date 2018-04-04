@@ -1,0 +1,15 @@
+<mat-grid-list cols="2" rowHeight="2:1">
+  <mat-grid-tile *ngFor="let x of bookList; index as i">
+
+      <mat-card class="book">
+          <app-product-preview [bookPreview]="x"></app-product-preview>
+          <mat-card-footer>
+              <button  (click)="RemoveFromCart(x.id)">Remove from Cart</button>
+          
+          </mat-card-footer>
+      </mat-card>
+   
+    
+  </mat-grid-tile>
+
+</mat-grid-list>

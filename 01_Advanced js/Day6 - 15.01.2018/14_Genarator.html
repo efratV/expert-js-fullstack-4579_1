@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+    
+         function *createIterator1(len) {
+             for (let i = 1; i < len; i++) {
+                 yield i*i;
+             }
+         }
+
+         let iterator1 = createIterator1(7);
+         console.log(iterator1);
+         console.log(iterator1.next());  //{value: 1, done: false}
+         console.log(iterator1.next());  //{value: 4, done: false}
+         console.log(iterator1.next());  //{value: 9, done: false}
+         console.log(iterator1.next());  //{value: 16, done: false}
+         console.log(iterator1.next());  //{value: 25, done: false}
+         console.log(iterator1.next());  //{value: 36, done: false}
+         console.log(iterator1.next());  //{value: undefined, done: false}
+
+
+         let iterator2 = createIterator1(3);
+         let res;
+
+         for (let res = iterator2.next(); !res.done; res = iterator2.next()) {
+             console.log(res.value);
+         } 
+
+         /*
+         let - of can only run trough iterable object
+         ----!!   generators are iterable     !!-----
+         */
+         let iterator3 = createIterator1(3);
+         for (let x of iterator3) {
+             console.log(x);
+         }
+       
+    </script>
+</head>
+<body>
+
+</body>
+</html>

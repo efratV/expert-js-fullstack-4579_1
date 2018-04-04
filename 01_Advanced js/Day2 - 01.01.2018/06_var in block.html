@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+
+        //in this point num1 & num2 are created in the memory
+        //num1=num2=undefined
+        console.log("num1", num1);  //->undefined
+        console.log("num2", num2);  //->undefined
+
+        var num1 = 0;
+
+        console.log("num1", num1);  //->0
+        console.log("num2", num2);  //->undefined
+
+        //num2=undefind -> if(!undefined)  -> returns true
+        if (!num2) {
+            console.log("num1", num1);  //->0
+
+            //changes the outer num1
+            var num1 = 3;
+
+            var num2 = 4;
+        }
+
+        console.log("num1", num1);  //->3
+        console.log("num2", num2);  //->4
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

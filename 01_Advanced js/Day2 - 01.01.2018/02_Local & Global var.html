@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+
+        func1();
+        
+        //console.log(num1);  //Uncaught ReferenceError: num1 is not defined
+        console.log(num2);
+        console.log(num3);
+
+        func1();
+
+        function func1() {
+            var num1 = 8;  //local
+            num2 = 9;  //global - added to window
+            window.num3 = 10;
+        }
+
+
+        (() => {
+            'use strict';
+            
+            func2();
+
+            function func2() {
+                var num4 = 8;  //local
+                num5 = 9;  //ERROR IN STRICT MODE
+                window.num3 = 10;
+            }
+        })();
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

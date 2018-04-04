@@ -1,0 +1,77 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <script>
+
+        /*--------------object literal--------------------
+        JavaScript’s object literals - creates directly plain objects
+        */
+        let collage = {
+            name: 'JB',
+            address: 'Tel Aviv',
+            describe: function () {
+                return `collage describe name: ${this.name}`;
+            },
+        };
+
+        Object.defineProperty(collage, 'notConfigurableProp', {
+            value: 456,
+            configurable: false
+        });
+
+        /*--------------Deleting properties--------------------
+        delete returns false if the property is an own property, but cannot be deleted.
+        And true in all other cases (even if it doesn’t change anything )
+        */
+        
+        console.log("collage before delete",collage);
+        delete (collage.address);
+        console.log("collage after delete(collage.address)",collage);
+
+        //delete affects only the own properties(non inherited)
+        //toString is inherited from Object 
+        console.log(delete (collage.toString));
+        console.log("collage after delete(collage.toString)",collage);
+
+        console.log(delete (collage.notConfigurableProp));
+        console.log("collage after delete(collage.notConfigurableProp)",collage);
+
+
+
+        /*--------------Object.values()--------------------
+       ECMAScript 2017 feature
+       Object.values() gets an object and returns all the values of its enumerable own properties in an Array
+       Properties, whose keys are symbols, are ignored
+       */
+        let objExample = { 
+            [Symbol("SymbolProp")]: 123,
+            one: 1, 
+            two: 2,
+            three: collage 
+        };
+        console.log("objExample",objExample);
+        console.log("Object.values(objExample)",Object.values(objExample));
+
+
+        console.log("Object.values(objExample)",JSON.stringify(objExample));
+
+        /*--------------Object.entries()--------------------
+        ECMAScript 2017 feature
+        entry is a key-value pair, encoded as a 2-element Array.
+        Object.entries() gets an object and returns all its enumerable own properties in an entries Array
+        Properties, whose keys are symbols, are ignored
+        */
+        console.log("Object.entries(objExample)",Object.entries(objExample));
+
+        for (let [k,v] of Object.entries(objExample)) {
+            console.log(`${k}: ${v}`);
+        }
+
+       
+    </script>
+</head>
+<body>
+
+</body>
+</html>

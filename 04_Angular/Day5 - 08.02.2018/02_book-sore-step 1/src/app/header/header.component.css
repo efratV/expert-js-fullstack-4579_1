@@ -1,0 +1,22 @@
+img {
+    height: 50px;
+    float: right;
+    display: block;
+    margin: 20px;
+}
+
+span {
+    float: right;
+    display: block;
+}
+
+button {
+    float: left;
+    display: block;
+    border-radius: 5px;
+    background-color: lightgray;
+    height: 30px;
+    padding: 5px;
+    margin: 20px;
+    margin-right: 8px;
+}

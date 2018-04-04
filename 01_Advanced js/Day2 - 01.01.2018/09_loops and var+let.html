@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        for (var i = 0; i < 5; i++) {
+            var tempIVar = i;  //variable per iteration
+            let tempILet = i;  //only one variable for all iterations
+
+            setTimeout(function () {
+                console.log("in loop i is:", i);  
+                console.log("in loop tempIVar is:", tempIVar);
+                console.log("in loop tempILet is:", tempILet);
+            }, 5000);
+        }
+
+        console.log("after loop i is:", i);
+        console.log("after loop tempIVar is:", tempIVar);
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

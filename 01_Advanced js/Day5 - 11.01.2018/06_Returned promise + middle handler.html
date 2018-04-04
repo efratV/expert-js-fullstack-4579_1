@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <script>
+        function promiseMulNum(x) {
+            return new Promise(function (resolve, reject) {
+                setTimeout(function () {
+                    if (x > 0)
+                        resolve(x * x);
+                        else
+                    reject("error");
+                }, 5000);
+            });
+        }
+
+
+        function promiseSubNum(x) {
+            return new Promise(function (resolve, reject) {
+                setTimeout(function () {
+                    if (x > 0)
+                        resolve(x - 1);
+                        else
+                    reject("error");
+                }, 5000);
+            });
+        }
+
+        function mulNum(action,num) {
+            switch (action) {
+                case "mul": return promiseMulNum(num)
+                    .then((m) => { return `resolve: mulNum got ${m} from promiseMulNum` })
+                    .catch((m) => { throw new Error(`reject: mulNum got ${m} from promiseMulNum`) });
+                
+                case "sub": return promiseSubNum(num)
+                    .then((m) => { return `resolve: subNum got ${m} from promiseSubNum` })
+                    .catch((m) => { throw new Error(`reject: subNum got ${m} from promiseSubNum`) });
+                
+                default: return new Promise(function (resolve, reject) {
+                    reject("not valid action");
+                });
+            }
+        }
+
+        let resolveAction = (msg) => { console.log(`resolveAction msg`, msg); };
+        let rejectAction = (msg) => { console.log(`rejectAction msg`, msg); };
+
+        mulNum("mul",10).then(resolveAction).catch(rejectAction);
+        mulNum("sub",0).then(resolveAction).catch(rejectAction);
+        mulNum("test",0).then(resolveAction).catch(rejectAction);
+
+        console.log("last line!");
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

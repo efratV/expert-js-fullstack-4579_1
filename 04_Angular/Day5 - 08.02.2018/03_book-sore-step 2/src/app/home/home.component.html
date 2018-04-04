@@ -1,0 +1,6 @@
+<p>{{storeInfo?.storeName}}</p>
+
+<img [src]="storeInfo?.mainImage" />
+
+<div>{{storeInfo?.address?.localInfo()}}</div>
+<app-country-info [country]="storeInfo?.address"></app-country-info>

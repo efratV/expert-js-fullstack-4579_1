@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <script>
+        function promiseMulNum(x) {
+            return new Promise(function (resolve, reject) {
+                setTimeout(function () {
+                    if (x > 0)
+                        resolve(x * x);
+                    reject("error");
+                }, 5000);
+            });
+        }
+
+
+        function mulNum(num) {
+            return promiseMulNum(num);
+        }
+
+        let resolveAction = (msg) => { console.log("resolve msg", msg); };
+        let rejectAction = (msg) => { console.log("reject msg", msg); };
+
+        mulNum(10).then(resolveAction).catch(rejectAction);
+        mulNum(0).then(resolveAction).catch(rejectAction);
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

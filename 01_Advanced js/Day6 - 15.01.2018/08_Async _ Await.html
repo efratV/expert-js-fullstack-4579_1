@@ -1,0 +1,89 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <script>
+        //async and await - new feature added by ES8
+        //Promise - native from ES6
+
+         /*
+            await does wait for a promise to resolve 
+            (It basically does the same then() does).
+            and then takes the value the promise resolved to and stores it into a variable. 
+            The code after await step2() will only execute once it's done
+            (it's like chaining then() calls therefore)
+         */
+
+        const step1 = (name) => {
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    if (name != "Tamir")
+                        resolve(name == "Moshiko");
+                    else
+                        reject(false);
+                },7000);
+            });
+        };
+
+        const step2 = (y) => {
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    if (y) {
+                        resolve('ok you are signed in');
+                    } else {
+                        reject('Not ok! please sign up');
+                    }
+                }, 2000);
+            });
+        };
+
+        //promise chain -  func1 returns Promise
+        function func1(nameParam) {
+            return step1(nameParam)
+                .then(y => { return step2(y) })
+                .then(y => { return y })
+                .catch(y => { return Promise.reject(y) });
+        }
+
+        //async - await  - func2 returns Promise
+        async function func2(nameParam) {
+            let step1Res,step2Res;
+
+            try {
+                step1Res = await step1(nameParam); //async operation - that returns Promise
+                step2Res= await step2(step1Res); //async operation
+            }
+            catch (e) {
+                throw (e);
+            }
+            return step2Res;  // is returned as resolve
+        }
+
+       
+        func2("Moshiko").then((x) => console.log(x))
+        .catch((x) => console.log("func1 reject: "+x));
+
+       func2("Moshiko").then((x) => console.log(x))
+        .catch((x) => console.log("func2 reject: "+x));
+
+        func1("Zohar").then((x) => console.log(x))
+        .catch((x) => console.log("func1 reject: "+x));
+
+        func2("Zohar").then((x) => console.log(x))
+        .catch((x) => console.log("func2 reject: "+x));
+
+        func1("Tamir").then((x) => console.log(x))
+        .catch((x) => console.log("func1 reject: "+x));
+
+        func2("Tamir").then((x) => console.log(x))
+        .catch((x) => console.log("func2 reject: "+x));
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

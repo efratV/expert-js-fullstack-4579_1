@@ -1,0 +1,14 @@
+/* writer: Zohar
+ *vs: 1.2 0.6 
+ *several lines comment
+ * since it uses the CSS comment syntax,
+ * it will appear in the CSS output. 
+ */
+body {
+  color: black;
+}
+
+a {
+  color: green;
+}
+/*# sourceMappingURL=style.css.map */

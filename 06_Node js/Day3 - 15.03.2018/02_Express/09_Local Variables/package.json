@@ -1,0 +1,16 @@
+{
+  "name": "local-variables",
+  "version": "1.0.0",
+  "description": "",
+  "main": "local-variables.js",
+  "dependencies": {
+    "express": "^4.14.0",
+    "ejs": "^2.5.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Anna Karp",
+  "license": "ISC"
+}

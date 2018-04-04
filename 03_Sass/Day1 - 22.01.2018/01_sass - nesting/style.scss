@@ -1,0 +1,25 @@
+#main {
+    color: blue;
+    &-sub {
+        background-color: red;
+    }
+    a {
+        font-weight: bold;
+        &:hover {
+            color: red;
+        }
+    }
+}
+
+div {
+    font: {
+        family: fantasy;
+        size: 15em;
+        weight: bold;
+    }
+   
+    border: {
+        color: yellow;
+        style: dashed;
+    }
+}

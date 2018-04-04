@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        func1();
+
+        function func1() {  //here num1 is created in the memory
+
+
+            //--------------DTZ-------------
+            //num1 is not undefined - it is uninitialized 
+            //(num1 is declared but is not set to a definite known value before it is used)
+
+            let num1;  //in this point num1 is undefined
+            let num2 = "function num2";
+
+            console.log(num1);  //-->undefined
+
+            num1 = 2;
+            console.log(num1);  //-->2
+
+            if (num1 == 2) {  //here num1 is created in the memory
+
+                //--------------DTZ-------------
+                //num1 is not undefined - it is uninitialized
+                // console.log(num1);  //Uncaught ReferenceError
+
+                console.log(num2);
+
+                let num1 = 3; //shadow effect
+                console.log(num1);  //-->3
+            }
+
+
+            console.log(num1);//-->2
+
+        }
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

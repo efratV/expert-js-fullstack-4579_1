@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <script>
+
+        /*--------------object literal--------------------
+        JavaScript’s object literals - creates directly plain objects
+        */
+        let collage = {
+            name: 'JB',
+            address: '',
+            describe: function () {
+
+                //Functions Inside Methods Shadow this
+                nestedFunk0=function () {
+                    console.log(`nestedFunk0 prints collage name: ${this.name}`);
+                }
+                nestedFunk0();
+
+                //solution 1: assign this to a variable that won’t be shadowed inside the nested function
+                var that = this;
+                nestedFunk1=function () {
+                    console.log(`nestedFunk1 prints collage name: ${that.name}`);
+                }
+                nestedFunk1();
+
+                //solution 2: use arrow function
+                nestedFunk2 = () =>console.log(`nestedFunk2 prints collage name: ${this.name}`);
+                nestedFunk2();
+
+                //solution 3: use bind() to give the callback a fixed value for this
+                nestedFunk0.bind(this)();
+
+
+                return `collage describe name: ${this.name}`;
+            },
+        };
+
+        Object.defineProperty(collage, 'notConfigurableProp', {
+            value: 456,
+            configurable: false
+        });
+
+        //dot operator  - Accessing Properties via Fixed Keys
+        console.log(collage.name);
+        console.log(collage.describe());
+
+        //bracket operator  - Accessing Properties via Computed Keys
+        console.log(collage["name"]);
+        console.log(collage["describe"]());
+
+
+
+
+       
+    </script>
+</head>
+<body>
+
+</body>
+</html>

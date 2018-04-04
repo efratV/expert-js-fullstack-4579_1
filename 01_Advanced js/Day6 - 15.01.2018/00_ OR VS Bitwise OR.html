@@ -1,0 +1,23 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+   <script>
+       var z1 = document.write("z1 ");
+       var z2 = document.write("z2 ") || 2;
+       var z3 = 3 || document.write("z3 ");
+       var z4 = 4 | document.write("z4 ");
+       
+        console.info(z1);  //undefined
+        console.info(z2);  //2
+        console.info(z3);  //3
+        console.info(z4);  //4
+
+       //in the document we will get:
+       //z1 z2 z4
+   </script>
+</head>
+<body>
+
+</body>
+</html>

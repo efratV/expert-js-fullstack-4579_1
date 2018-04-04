@@ -1,0 +1,12 @@
+<div>
+    <img [src]="bookPreview.volumeInfo?.imageLinks?.smallThumbnail" />
+    <h2> {{bookPreview.volumeInfo?.title}}</h2>
+    <h4 *ngIf="bookPreview.volumeInfo?.subtitle"> 
+        {{bookPreview.volumeInfo.subtitle | appStringShort:35}}
+    </h4>
+    <p> {{bookPreview.volumeInfo?.authors}}</p>
+    <p> {{bookPreview.saleInfo?.listPrice?.amount}}</p>
+</div>
+
+
+

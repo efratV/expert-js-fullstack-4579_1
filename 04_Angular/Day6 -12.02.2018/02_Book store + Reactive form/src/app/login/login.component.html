@@ -1,0 +1,22 @@
+
+<form novalidate [formGroup]="loginForm" (ngSubmit)="changeUser()">
+
+    <div>
+        <!-- Each formControlName binds to one formControl inside the formGroup property: -->
+        <input type="text" formControlName="userName" placeholder="name" /> 
+        <app-error [controlParam]="loginForm.controls['userName']"></app-error>   
+    </div>
+
+
+    <div>
+        <!-- Each formControlName binds to one formControl inside the formGroup property: -->
+        <input type="password" formControlName="userPassword" />
+        <app-error [controlParam]="loginForm.controls['userPassword']"  [validateState]="dirty"></app-error>
+    </div>
+
+
+    <div>
+        <input type="submit" value="Login" [disabled]="!loginForm.valid" />     
+    </div>
+
+</form>

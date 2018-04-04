@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script>
+        function outer() {
+            var x = 1;
+
+            function inner() {
+                return ++x;
+            }
+
+            return inner;
+        }
+
+        var pointerToInner = outer();
+
+        console.log(pointerToInner());  //2
+        console.log(pointerToInner());  //3
+        console.log(pointerToInner());  //4
+        console.log(pointerToInner());  //5
+        console.log(pointerToInner());  //6
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

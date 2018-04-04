@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        //false values: false,"",0,NaN,null,undefined
+        if (!false) {
+            console.log(false);
+        }
+        if (!"") {
+            console.log("empty string");
+        }
+        if (!0) {
+            console.log(0);
+        }
+        if (!NaN) {
+            console.log(NaN);
+        }
+        if (!null) {
+            console.log(null);
+        }
+        if (!undefined) {
+            console.log(undefined);
+        }
+
+
+        console.log("null==undefined", null == undefined);
+        console.log("!false==!undefined", !false == !undefined);
+        console.log("!false==!null", !false == !null);
+        console.log("false==undefined", false == undefined);
+        console.log("false==null", false == null);
+        console.log("true==undefined", true == undefined);
+        console.log("true==null", true == null);
+        console.log("false==0", false == 0);
+        console.log("true==0", true == 0);
+
+        //checking if a specific variable is undefined
+        var var1 = null;
+        console.log("var1==undefined", var1 == undefined);
+
+        console.log("var1===undefined", var1 === undefined);
+        console.log(`typeof(var1)=="undefined"`, typeof (var1) == "undefined");
+
+        console.log(`typeof(b)=="undefined"`, typeof (b) == "undefined");  //false
+        console.log("b===undefined", b === undefined); //error
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>>

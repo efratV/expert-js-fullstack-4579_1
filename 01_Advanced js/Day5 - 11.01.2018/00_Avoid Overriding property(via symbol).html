@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script>
+
+        let symTemp = Symbol("name");
+        let user1 = {
+            name: "Zohar",
+            name: "Igor"
+        };
+
+
+        user1.name = "Elijahu";
+
+        console.log("user1", user1);  // {name: "Elijahu"}
+        console.log("JSON.stringify(user1)", JSON.stringify(user1));
+
+        let user2 = {
+            [Symbol("name")]: "Zohar",
+            [Symbol("name")]: "Igor"
+        };
+
+        user2[Symbol("name")] = "Elijahu";
+        user2[symTemp] = "Bob";
+
+        console.log("user2", user2);  // Symbol(name): "Zohar", Symbol(name): "Igor", Symbol(name): "Elijahu", Symbol(name): "Bob"
+        console.log("JSON.stringify(user2)", JSON.stringify(user2));  //{}
+        console.log(user2[Symbol("name")]);  //undefined
+        console.log(user2[symTemp]);  //Bob
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

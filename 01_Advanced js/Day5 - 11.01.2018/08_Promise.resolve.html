@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script>
+
+
+        const p1=new Promise(
+                function (resolve, reject) {
+                            reject('Promise.reject worked!!!');
+                });
+
+        p1.then(x => console.log(x)).catch(y => console.log("Error: "+y));
+
+
+
+        const resolveAction = {
+            then(y) {
+                y('Promise.resolve worked!!!');
+            }
+        };
+        const p2 = Promise.resolve(resolveAction);
+
+        p2.then(x => console.log(x)); 
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

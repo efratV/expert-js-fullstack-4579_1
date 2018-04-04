@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script>
+        function Person() {
+            let age = 5;
+
+            this.setAge = function () {
+                age = calcAge(age);
+                console.log("age",age)
+            }
+        }
+
+
+        function calcAge(age) {
+            for (let i = 0; i < Math.pow(10,10); i++) {
+
+            }
+            return age++;
+        }
+
+        let p=new Person();
+        p.setAge();
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

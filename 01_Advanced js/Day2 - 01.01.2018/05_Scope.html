@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+
+        var num0 = 2;
+        var num2 = 2;
+
+        func1();
+
+        //console.log(num1);  //Uncaught ReferenceError: num1 is not defined
+        //console.log(num2);   //Uncaught ReferenceError: num2 is not defined
+
+        function func1() {
+            /*
+            ---------------------------
+            start of function scope - all the "var" variables are created in the memory
+            and contain "undefined" as a value.
+
+            in this case:num2,num4
+            ----------------------------
+            start of block scope  -
+            all the "let" variables that are not in an inner block, are created in the memory
+
+            in this case:num1
+            ----------------------------
+            */
+
+
+
+            console.log("num0", num0);  //refers the global var
+            console.log("num2", num2);  //refers a local var
+
+            let num1 = 0;  //block scope
+            var num2 = 1;  //function scope
+
+
+            if (num1 == 0) {
+
+                /*
+                -------------------------
+                start of block scope  
+                all the "let" variables that are not in an inner block, are created in the memory
+
+                in this case:num3
+                -------------------------
+                */
+
+
+                //console.log(num3); //Uncaught ReferenceError: num3 is not defined
+                console.log(num4);
+
+
+                let num3 = 3;  //block scope
+                var num4 = 4;  //function scope
+
+                console.log(num3);
+                console.log(num4);
+            }
+
+
+            console.log(num1);
+            console.log(num2);
+            //console.log(num3); //Uncaught ReferenceError: num3 is not defined
+            console.log(num4);
+        }
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

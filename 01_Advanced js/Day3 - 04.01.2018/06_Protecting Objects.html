@@ -1,0 +1,126 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <script>
+
+
+        let collage = {
+            name: 'JB',
+            address: 'Tel Aviv',
+            students:["A","B","c"]
+        }
+
+
+        /*Preventing Extensions----------------
+        makes it impossible to add properties to obj
+        adding a property fails silently in non-strict mode,
+        and throws an error in strict mode
+        */
+
+        Object.preventExtensions(collage);
+        console.log("before adding fullAddress to collage", collage);
+        collage.fullAddress = 'homa umigdal tel aviv';
+        console.log("after adding fullAddress to collage", collage);
+
+        try{
+            (function () {
+                'use strict';
+                collage.fullAddress = 'homa umigdal tel aviv';
+            }());
+        }
+        catch (e) {
+            console.log(e);
+        }
+
+        //You can still delete properties, though delete()
+        console.log("before deleting address from collage", collage);
+        delete (collage.address);
+        console.log("after deleting address from collage", collage);
+
+        //check whether an object is extensible
+        console.log("Object.isExtensible(collage)",Object.isExtensible(collage));
+
+
+
+
+        /*Sealing----------------
+        prevents extensions and makes all properties unconfigurable.
+        */
+        console.log("before sealing:",Object.getOwnPropertyDescriptor(collage, 'name'));  
+        Object.seal(collage)
+        console.log("after sealing:", Object.getOwnPropertyDescriptor(collage, 'name'));
+     
+
+        try {
+            collage.fullAddress = 'homa umigdal tel aviv';
+        }
+        catch (e) {
+            console.log(e);
+        }
+
+
+        try {
+            Object.defineProperty(collage, 'name', { enumerable: false });
+        }
+        catch (e) {
+            console.log(e);
+        }
+
+        //You can still change the value of the property, but not its attributes
+        console.log("before change", collage);
+        collage.name = 'JBH';
+        console.log("after change", collage);
+
+        //check whether an object is sealed 
+        console.log("Object.isSealed(collage)", Object.isSealed(collage));
+
+
+        /*Freezing----------------
+        makes all properties nonwritable and seals obj. 
+        adding a property fails silently in non-strict mode,
+        and throws an error in strict mode
+        */
+
+        Object.freeze(collage);
+
+        collage.name = 'JB';  // no effect, collage.name is read-only
+
+        collage.fullAddress = 'homa umigdal tel aviv';  // no effect, collage is not extensible
+
+
+        try {
+            (function () {
+                'use strict';
+                collage.name = 'JB';
+            }());
+        }
+        catch (e) {
+            console.log(e);
+        }
+        
+
+        try {
+            (function () {
+                'use strict';
+                collage.fullAddress = 'homa umigdal tel aviv';
+            }());
+        }
+        catch (e) {
+            console.log(e);
+        }
+
+        //Protecting an object affects the own properties, but not the values of those properties
+        collage.students = ["W","Z"]; // no effect
+        collage.students.push("D"); // changes  collage.students
+
+        //check whether an object is frozen 
+        console.log("Object.isFrozen(collage)", Object.isFrozen(collage));
+        
+       
+    </script>
+</head>
+<body>
+
+</body>
+</html>

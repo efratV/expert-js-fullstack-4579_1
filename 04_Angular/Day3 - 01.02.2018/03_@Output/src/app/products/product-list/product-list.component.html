@@ -1,0 +1,35 @@
+<section>
+
+    <table border="1" *ngIf="products?.length; else noProducts" [style.font-size.px]="fontSize">
+        <tr>
+            <th>Product Name</th>
+            <th (click)="showAveragePrice()">Unit Price</th>
+            <th>Units in Stock</th>
+            <th>Units on Order</th>
+            <th>Image</th>
+        </tr>
+        <tr *ngFor="let p of products">
+            <td>{{p.productName}}</td>
+            <td>{{p.unitPrice | currency:'ILS':true:'1.2-2'}}</td>
+            <td>{{p.unitsInStock}}</td>
+            <td>{{p.unitsOnOrder}}</td>
+
+            <td>
+                <!-- Registering the event to a CallBack function. The @event is the data sent by the event: -->
+                <af-product-image imageSource="/assets/images/{{p.productID}}.jpg" 
+                    (onImageClicked)="showClickedImage($event)"></af-product-image>
+            </td>
+        </tr>
+    </table>
+
+    <ng-template #noProducts>
+        <h2>There are no products to show.</h2>
+    </ng-template>
+
+    <span>Change font size: </span>
+    <input type="range" min="10" max="30" [(ngModel)]="fontSize" />
+
+    <!-- Displaying the clicked image: -->
+    <img *ngIf="clickedImageSource" [src]="clickedImageSource" class="topLeft" />
+
+</section>

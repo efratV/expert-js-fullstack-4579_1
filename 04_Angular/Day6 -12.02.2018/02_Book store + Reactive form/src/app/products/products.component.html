@@ -1,0 +1,14 @@
+
+<label for="bookFilter">Search book:</label>
+<input name="bookFilter" #bookFilterInput>
+
+<button (click)="searchBooks(bookFilterInput.value)"> search</button>
+
+
+<div *ngFor="let x of bookList; index as i">
+  <app-product-preview [bookPreview]="x"></app-product-preview>
+  <button *ngIf="x.id; else noDetails" (click)="showFullDetail(x.id)">show full details</button>
+  <ng-template #noDetails>
+      This Book has no details
+  </ng-template>
+</div>

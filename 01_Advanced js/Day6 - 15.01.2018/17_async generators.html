@@ -1,0 +1,57 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+   <script>
+       console.log("A1");
+
+
+       function returnPromise(x) {
+           return new Promise((resolve, reject) => {
+               setTimeout(() => {
+                   resolve(x * x);
+               }, 2000)
+           })
+       }
+       let gen = function* () {
+           console.log("A2");
+           
+           let response = yield returnPromise(2);
+           response = yield returnPromise(response);
+           response = yield returnPromise(response);
+           response = yield returnPromise(response);
+           response = yield returnPromise(response);
+
+           console.log("A3");
+        
+           return "DONE";
+       };
+
+
+       function run(generator) {
+
+           const iterator = generator();
+
+           function iterate(iteration) {
+               if (iteration.done)
+                   return iteration.value;
+               return iteration.value.then(p => {
+                   console.log(p);
+                   iterate(iterator.next(p));
+               });
+           }
+
+           return iterate(iterator.next());
+       }
+
+       run(gen);
+       
+       console.log("A4");
+      
+
+   </script>
+</head>
+<body>
+
+</body>
+</html>

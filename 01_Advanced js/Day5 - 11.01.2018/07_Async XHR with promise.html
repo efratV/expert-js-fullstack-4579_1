@@ -1,0 +1,77 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script>
+        //The following is a "Promise based function" 
+        //this function performs an HTTP GET via the event- based XMLHttpRequest 
+        function httpGet(url) {
+            return new Promise(
+                function (resolve, reject) {
+                    const request = new XMLHttpRequest();
+                    request.onload = function () {
+                        if (this.status === 200) {
+                            // Success
+                            resolve(this.response);
+                        } else {
+                            // Something went wrong (404 etc.)
+                            reject(new Error(this.statusText));
+                        }
+                    };
+                    request.onerror = function () {
+                        reject(new Error(
+                            'XMLHttpRequest Error: ' + this.statusText));
+                    };
+                    request.open('GET', url);
+                    request.send();
+                });
+        }
+
+
+
+        httpGet('https://reqres.in/api/users?delay=3')
+            .then(
+            function (value) {
+                console.log('Contents: ' + value);
+            },
+            function (reason) {
+                console.error('Something went wrong', reason);
+            });
+
+
+        //the right way to chain promises
+        httpGet('https://reqres.in/api/users?delay=3')
+            .then(
+            function (value) {
+                console.log('Call num 2: users?delay=3: ' + value);
+                return httpGet('https://reqres.in/api/users?page=2')
+            }).then(
+            function (value) {
+                console.log('Call num 2: users?page=2: '+ value);
+            }).catch(
+            function (reason) {
+                console.log('Call num 2 - Something went wrong', reason);
+            });
+
+
+        //the bad way to chain promises  - nested
+        httpGet('https://reqres.in/api/users?delay=3')
+            .then(
+            function (value) {
+                console.log('Call num 3: users?delay=3: ' + value);
+                return httpGet('https://reqres.in/api/users?page=2').then(
+                    function (value) {
+                        console.log('Call num 3: users?page=2: ' + value);
+                    })
+            }).catch(
+            function (reason) {
+                console.log('Call num 3 - Something went wrong', reason);
+            });
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

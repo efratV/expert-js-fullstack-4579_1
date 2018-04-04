@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <script>
+        let collage = {
+            name: 'JB',
+            address: 'Tel Aviv',
+            describe: function () {
+                return `collage describe name: ${this.name}`;
+            },
+        };
+
+        Object.defineProperty(collage, 'notConfigurableProp', {
+            value: 456,
+            configurable: true,
+            enumerable: true
+        });
+
+        Object.defineProperty(collage, 'notEnumerableProp', {
+            value: 1,
+            enumerable: false
+        })
+
+        console.log("address", Object.getOwnPropertyDescriptor(collage, "address"));
+        console.log("notConfigurableProp", Object.getOwnPropertyDescriptor(collage, "notConfigurableProp"));
+
+        //Object.values returns an array of all the enumerable properties
+        console.log("Object.values(collage)", Object.values(collage));
+
+        //JSON.stringify returns a string with all the enumerable properties
+        console.log("JSON.stringify(collage)", JSON.stringify(collage))
+
+
+        //Object.entries returns an array of the entries of all the enumerable properties
+        console.log("Object.entries(collage)", Object.entries(collage));
+        for (let [k, v] of Object.entries(collage)) {
+            console.log(`${k}: ${v}`);
+        }
+
+        for (let k in collage) {
+            console.log(`${k}: ${collage[k]}`);
+        }
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

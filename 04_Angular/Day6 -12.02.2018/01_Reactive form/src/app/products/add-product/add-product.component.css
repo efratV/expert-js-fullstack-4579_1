@@ -1,0 +1,9 @@
+form > div > * {
+    font-size: x-large;
+    margin: 20px;
+}
+
+/* Paint formControl only when touched (lost focus) and invalid: */
+.ng-touched.ng-invalid:not(form)  {
+    background-color: pink;
+}

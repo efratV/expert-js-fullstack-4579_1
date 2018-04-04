@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <script>
+
+        /*--------------object literal--------------------
+        JavaScript’s object literals - creates directly plain objects
+        */
+        let collage = {
+            name: 'JB',
+            address: 'Tel Aviv',
+           
+        };
+
+        //dot operator  - Accessing Properties via Fixed Keys
+        console.log(collage.name);
+        console.log(collage.address);
+        
+        //bracket operator  - Accessing Properties via Computed Keys
+        let tempStr="address";
+        console.log(collage["name"]);
+        console.log(collage[tempStr]);
+        console.log(collage[getKey()]);
+
+        function getKey(){
+            return "address";
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

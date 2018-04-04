@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        //-----------------------while----------------------
+        let numGlobal = 0;
+        console.log("before while loop numGlobal is:", numGlobal);
+
+        while (numGlobal < 3) {
+            let numInWhile = 0;  // is alive only in current iteration
+            numGlobal++;
+        }
+        //console.log("after while loop numInWhile is:",numInWhile);  -->ERROR
+        console.log("after while loop numGlobal is:", numGlobal);
+
+
+
+        //-----------------------for----------------------
+        for (let i = 0; i < 3; i++) {
+            console.log("inside for loop i is:", i);
+        }
+        //console.log("inside for loop i is:",i); // Uncaught ReferenceError
+
+
+
+        //-----------------------do - while----------------------
+        /*
+        do{
+           let numInDo=10;
+        }while(numInDo<10);   //Uncaught ReferenceError
+        */
+
+        {
+            let numOnlyForDo = 0;
+            console.log("before do  loop numOnlyForDo  is:", numOnlyForDo);
+
+            do {
+                numOnlyForDo = 10;
+            } while (numOnlyForDo < 10);
+
+            console.log("after do  loop numOnlyForDo  is:", numOnlyForDo);
+        }
+        //console.log("after do  loop numOnlyForDo  is:",numOnlyForDo);  -->ERROR
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,48 @@
+<section>
+
+    <!-- If there are products - show products table: -->
+    <table border="1" *ngIf="products?.length; else noProducts">
+        <tr>
+            <th>Product Name</th>
+            <th>Unit Price</th>
+            <th>Units in Stock</th>
+            <th>Units on Order</th>
+        </tr>
+        <tr *ngFor="let p of products">
+            <td>{{p.productName}}</td>
+            <td>{{p.unitPrice | currency:'ILS':true:'1.2-2'}}</td>
+            <td>{{p.unitsInStock}}</td>
+            <td>{{p.unitsOnOrder}}</td>
+        </tr>
+    </table>
+
+    <!-- Else - show 'no products' message: -->
+    <ng-template #noProducts>
+        <h2>There are no products to show.</h2>
+    </ng-template>
+
+
+
+    <!--
+        if we want to add a section that is shown only when the condition returns false
+        we have to create "ng-template" tag, and name this tag with a name that has a "#" prefix
+       
+        
+        the syntax is: 
+        =======================
+       <someElement *ngIf="[condition]; else [ng-template tag name]">
+           ....
+
+       </someElement>
+       ========================
+       if the condition returns true - then "someElement" will be rendered 
+       else - the "ng template" will be rendered 
+    -->
+    <p *ngIf="products?.length==0; else noProductsTest">
+        if products?.length==0 is TRUE
+    </p>
+
+    <ng-template #noProductsTest>
+        <h2>if products?.length==0 is FALSE</h2>
+    </ng-template>
+</section>

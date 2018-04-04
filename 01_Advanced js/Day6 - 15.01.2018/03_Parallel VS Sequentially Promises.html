@@ -1,0 +1,97 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <script>
+
+        //simple function that returns a promise
+        function asyncFunc1(num) {
+            return new Promise((resolve, reject) => {
+                console.log("in asyncFunc1");
+                setTimeout(() => {
+                    if (num > 0)
+                        resolve("asyncFunc1 reslove");
+                    else
+                        reject("asyncFunc1 reject");
+                }
+                    , 6000)
+
+            })
+        }
+
+        //simple function that returns a promise
+        function asyncFunc2(num) {
+            return new Promise((resolve, reject) => {
+                console.log("in asyncFunc2");
+                setTimeout(() => {
+                    if (num != 0)
+                        resolve("asyncFunc2 reslove");
+                    else
+                        reject("asyncFunc2 reject");
+                }
+                    , 1000)
+
+            })
+        }
+
+
+        const resolveFunc = (x) => { console.log("Promise.resolve", x) };
+        const rejectFunc = (x) => { console.log("Promise.reject", x) };
+
+
+
+
+        /*
+         then() always returns a Promise, which enables you to chain method calls
+         chain asynchronous function calls via then() executes sequentially,
+         sequentially - one Promise at a time
+         (asyncFunc2 begins only when asyncFunc1 is done)
+        */
+
+
+        console.log("START");
+        
+        asyncFunc1(0)  //asyncFunc1 will reject - via catch()
+            .then(x => {
+                resolveFunc("sequentially asyncFunc1: " + x);
+                return asyncFunc2(1);   //asyncFunc2 will not be called (asyncFunc1 is not resolved)
+            })
+            .then(x => {
+                resolveFunc("sequentially asyncFunc2 : " + x);
+            })
+            .catch(rejectFunc);
+
+
+
+        /*
+        Parallel Promises are concurrent promises
+        that execute at the same time within the same frame
+        (asyncFunc2 begins before asyncFunc1 is done)
+        */
+        asyncFunc1(0)  //asyncFunc1 will reject - via catch()
+            .then(x => {
+                resolveFunc("Parallel asyncFunc1 : " + x);
+            })
+            .catch(rejectFunc);
+
+
+        asyncFunc2(1)//asyncFunc2 will reject - via catch()
+            .then(x => {
+            resolveFunc("Parallel asyncFunc2 : " + x)
+
+        })
+            .catch(rejectFunc);
+
+        console.log("END");
+
+
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

@@ -1,0 +1,72 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <script>
+        function asyncFunc1(num) {
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    if (num > 0)
+                        resolve("asyncFunc1 resolve");
+                    else
+                        reject("asyncFunc1 reject");
+                }
+                    , 6000)
+
+            })
+        }
+
+
+        function asyncFunc2(num) {
+
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    if (num != 0)
+                        resolve("asyncFunc2 resolve");
+                    else
+                        reject("asyncFunc2 reject");
+                }
+                    , 1000)
+
+            })
+        }
+
+
+        const resolveFunc = (x) => { console.log("Promise.resolve", x) };
+        const rejectFunc = (x) => { console.log("Promise.reject", x) };
+
+
+
+        /*
+        Promise.all() is iterable that enables you to be notified once all results are in
+        Its input is an Array of Promises
+
+        Promise.all returns a Promise that:
+        is fulfilled if all elements in iterable are fulfilled (with an Array of the results)
+        is rejected if any of the elements are rejected (first rejection value)
+
+
+        */
+                Promise.all([
+                    asyncFunc1(1),
+                    asyncFunc2(1)
+                ]).then(([result1, result2]) => {
+                        resolveFunc("result1 in all:" + result1);
+                        resolveFunc("result2 in all:" + result2);
+                    })
+                    .catch(
+                    // Receives first rejection among the Promises
+                    rejectFunc
+                    );
+        
+    
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
